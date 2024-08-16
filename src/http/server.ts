@@ -10,6 +10,8 @@ import {
 
 import { env } from "~/env";
 
+import { getHelloWorld } from "./routes/get-hello-world";
+
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setSerializerCompiler(serializerCompiler);
@@ -29,6 +31,8 @@ app.register(fastifySwagger, {
 app.register(fastifySwaggerUi, {
   routePrefix: "/docs",
 });
+
+app.register(getHelloWorld);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log("HTTP server running!");
