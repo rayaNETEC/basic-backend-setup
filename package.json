@@ -16,8 +16,13 @@
     "eslint": "^9.9.0",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.1.0"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1",
+    "zod": "^3.23.8"
   }
 }
