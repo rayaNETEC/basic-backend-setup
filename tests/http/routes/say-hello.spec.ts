@@ -25,4 +25,19 @@ describe("/say-hello route", () => {
       message: "Hello Mocked User",
     });
   });
+
+  it("should return 400 when sending invalid types", async () => {
+    const response = await app.inject({
+      method: "POST",
+      url: "/say-hello",
+      payload: {
+        name: 123,
+      },
+    });
+
+    expect(response.statusCode).toBe(400);
+    const body = response.json();
+
+    expect(body).toHaveProperty("code", "FST_ERR_VALIDATION");
+  });
 });

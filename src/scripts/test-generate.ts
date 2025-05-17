@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from "fs";
 import path from "path";
 import { Project } from "ts-morph";
@@ -6,6 +7,7 @@ import { pathToFileURL } from "url";
 import { formatObjectContent, toKebabCase } from "#/utils/format.js";
 import { getCurrentFilePaths, resolveProjectPaths } from "#/utils/paths.js";
 
+import { generateInvalidPayload } from "./helpers/functions.js";
 import { generateTestE2EContent } from "./templates/test-e2e-content.js";
 import { generateTestUnitContent } from "./templates/test-unit-content.js";
 
@@ -36,24 +38,29 @@ import { generateTestUnitContent } from "./templates/test-unit-content.js";
 
       let capturedRoute = "/";
       let capturedMethod = "get";
+      let capturedSchema: any = null;
 
       const mockApp = {
         withTypeProvider: () => ({
-          get: (route: string) => {
-            capturedRoute = route;
-            capturedMethod = "get";
-          },
-          post: (route: string) => {
+          post: (route: string, opts: any) => {
             capturedRoute = route;
             capturedMethod = "post";
+            capturedSchema = opts.schema;
           },
-          put: (route: string) => {
+          get: (route: string, opts: any) => {
+            capturedRoute = route;
+            capturedMethod = "get";
+            capturedSchema = opts.schema;
+          },
+          put: (route: string, opts: any) => {
             capturedRoute = route;
             capturedMethod = "put";
+            capturedSchema = opts.schema;
           },
-          delete: (route: string) => {
+          delete: (route: string, opts: any) => {
             capturedRoute = route;
             capturedMethod = "delete";
+            capturedSchema = opts.schema;
           },
         }),
       };
@@ -80,6 +87,8 @@ import { generateTestUnitContent } from "./templates/test-unit-content.js";
         ? formatObjectContent(payload, 0, 2)
         : "";
 
+      const schema = capturedSchema?.body;
+
       const testUnitContent = generateTestUnitContent(
         capturedRoute,
         capturedMethod,
@@ -89,6 +98,7 @@ import { generateTestUnitContent } from "./templates/test-unit-content.js";
       }`
           : "",
         formatObjectContent(expectedResponse, 0, 2),
+        schema ? formatObjectContent(generateInvalidPayload(schema), 0, 2) : "",
       );
 
       const testE2EContent = generateTestE2EContent(
@@ -96,6 +106,7 @@ import { generateTestUnitContent } from "./templates/test-unit-content.js";
         capturedMethod,
         formattedPayloadContent,
         formatObjectContent(expectedResponse, 1, 2),
+        schema ? formatObjectContent(generateInvalidPayload(schema), 1, 2) : "",
       );
 
       const testUnitFilePath = path.join(testsDir, `${fileName}.spec.ts`);
