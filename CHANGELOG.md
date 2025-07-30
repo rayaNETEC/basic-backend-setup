@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.2.0 (2025-07-30)
+
+
+### Features
+
+* **releases:** add route to expose GitHub releases as JSON ([b5eb2aa](https://github.com/rayaNETEC/basic-backend-setup/commit/b5eb2aa257f0ddd4dc915f63d1315468c77ba92e))
+
 ### 1.1.4 (2025-07-30)
 
 
