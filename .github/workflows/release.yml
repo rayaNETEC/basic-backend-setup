@@ -59,6 +59,13 @@ jobs:
       - name: Push changes and tags
         run: git push --follow-tags origin main
 
+      - name: Create release with standard-version
+        run: npx standard-version
+
+      - name: Push changes and tags
+        run: |
+          git push --follow-tags origin main
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
