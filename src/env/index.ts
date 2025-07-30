@@ -6,6 +6,9 @@ const envSchema = z.object({
     .default("dev"),
   PORT: z.coerce.number().default(3333),
   GEMINI_API_KEY: z.string().min(1),
+  GITHUB_TOKEN: z.string().min(1),
+  GITHUB_OWNER: z.string().min(1),
+  GITHUB_REPO: z.string().min(1),
 });
 
 const _env = envSchema.safeParse(process.env);

@@ -9,6 +9,7 @@ import {
 } from "fastify-type-provider-zod";
 
 import { getHelloWorld } from "./routes/get-hello-world.js";
+import { getReleases } from "./routes/get-releases.js";
 import { sayHello } from "./routes/say-hello.js";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -33,3 +34,4 @@ app.register(fastifySwaggerUi, {
 
 app.register(getHelloWorld);
 app.register(sayHello);
+app.register(getReleases);
