@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.1.1 (2025-07-30)
+
+
+### Bug Fixes
+
+* **ci:** add global pnpm install back to fix workflow ([b354b71](https://github.com/rayaNETEC/basic-backend-setup/commit/b354b71a1c1fcf909debbd3aa346ae8a9ae8d84c))
+
 ## 1.1.0 (2025-07-30)
 
 
