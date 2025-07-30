@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.1.4 (2025-07-30)
+
+
+### Bug Fixes
+
+* **ci:** adjust release workflow dependencies ([d00d520](https://github.com/rayaNETEC/basic-backend-setup/commit/d00d52093e3144d239d8ffc54a88cec89c768c20))
+
 ### [1.1.3](https://github.com/rayaNETEC/basic-backend-setup/compare/v1.1.2...v1.1.3) (2025-07-30)
 
 ### 1.1.2 (2025-07-30)
