@@ -42,13 +42,19 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-pnpm-cache-
 
+      - name: Install PNPM
+        run: npm install -g pnpm
+
+      - name: Verify PNPM installation
+        run: pnpm --version
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Run standard-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm run release
+        run: pnpm release
 
       - name: Push changes and tags
         run: git push --follow-tags origin main
