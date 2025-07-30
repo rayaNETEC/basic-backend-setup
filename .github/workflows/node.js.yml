@@ -27,11 +27,6 @@ jobs:
           key: ${{ runner.OS }}-pnpm-cache-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.OS }}-pnpm-cache-
-      - name: Install PNPM
-        run: npm install -g pnpm
-
-      - name: Verify PNPM installation
-        run: pnpm --version
 
       - name: Install dependencies
         run: pnpm install
