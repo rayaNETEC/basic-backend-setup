@@ -1,6 +1,6 @@
 {
   "name": "basic-backend-setup",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -10,7 +10,8 @@
     "test:generate-with-ai": "tsx --env-file=.env src/scripts/test-generate-with-ai.ts",
     "dev": "tsx watch --env-file=.env -r tsconfig-paths/register src/index.ts",
     "build": "tsup src/index.ts --out-dir dist --clean",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "fs-extra": "^11.3.0",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
+    "standard-version": "^9.5.0",
     "supertest": "^7.1.1",
     "ts-morph": "^25.0.1",
     "tsconfig-paths": "^4.2.0",
